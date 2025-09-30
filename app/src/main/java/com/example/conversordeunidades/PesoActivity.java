@@ -1,24 +1,27 @@
 package com.example.conversordeunidades;
 
-import android.os.Bundle;
+import com.example.conversordeunidades.business.ConversorTemperatura;
+import com.example.conversordeunidades.business.IConversor;
 
-import androidx.activity.EdgeToEdge;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
-
-public class PesoActivity extends AppCompatActivity {
+// Apenas estende a classe base, sem implementar AdapterView.OnItemSelectedListener
+public class PesoActivity extends ConversorBaseActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_peso);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
+    protected int getLayoutResId() {
+        return R.layout.activity_peso; // Garanta que seu XML chame activity_temp
     }
+
+    @Override
+    protected IConversor getConversorInstance() {
+        return new ConversorTemperatura();
+    }
+
+    @Override
+    protected String[] getUnidades() {
+        return new String[]{"Celsius", "Fahrenheit", "Kelvin"};
+    }
+
+
+    @Override protected int getOrigemSelection() { return 0; }
+    @Override protected int getDestinoSelection() { return 1; }
 }

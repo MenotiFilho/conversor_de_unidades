@@ -1,7 +1,8 @@
 package com.example.conversordeunidades.business;
 
-public class ConversorTemperatura {
+public class ConversorTemperatura implements IConversor {
 
+    @Override
     public double converter(double valor, String origem, String destino) {
         if (origem.equals(destino)) {
             return valor;
