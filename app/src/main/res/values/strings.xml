@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Conversor de Unidades</string>
+    <string name="temperatura">Temperatura</string>
+    <string name="comprimento">Comprimento</string>
+    <string name="peso">Peso</string>
+    <string name="tempo">Tempo</string>
 </resources>

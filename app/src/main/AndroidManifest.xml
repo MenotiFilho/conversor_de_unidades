@@ -12,6 +12,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ConversorDeUnidades">
         <activity
+            android:name=".TempoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ComprimentoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TempActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PesoActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

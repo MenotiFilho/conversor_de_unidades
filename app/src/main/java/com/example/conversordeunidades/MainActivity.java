@@ -1,6 +1,9 @@
 package com.example.conversordeunidades;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,5 +23,26 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+    }
+
+    public void botaoTemp(View view){
+        Intent intent = new Intent(MainActivity.this,TempActivity.class);
+
+        startActivity(intent);
+    }
+    public void botaoComprimento(View view){
+        Intent intent = new Intent(MainActivity.this,ComprimentoActivity.class);
+
+        startActivity(intent);
+    }
+    public void botaoPeso(View view){
+        Intent intent = new Intent(MainActivity.this,PesoActivity.class);
+
+        startActivity(intent);
+    }
+    public void botaoTempo(View view){
+        Intent intent = new Intent(MainActivity.this,TempoActivity.class);
+
+        startActivity(intent);
     }
 }
