@@ -20,7 +20,7 @@ import com.example.conversordeunidades.business.ConversorTemperatura;
 
 import java.util.Locale;
 
-public class TempActivity extends AppCompatActivity {
+public class TempActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     private EditText editTextTemperatura;
     private TextView textViewResultado;
@@ -45,13 +45,15 @@ public class TempActivity extends AppCompatActivity {
         textViewResultado = findViewById(R.id.TextViewResultado);
         spinnerOrigem = findViewById(R.id.spinnerTempOrigem);
         spinnerDestino = findViewById(R.id.spinnerResultado);
+
+        conversor = new ConversorTemperatura();
+
         this.configurarSpinners();
         this.adicionarTextWatcher();
 
-        conversor = new ConversorTemperatura();
     }
 
-    public void adicionarTextWatcher(){
+    private void adicionarTextWatcher(){
         editTextTemperatura.addTextChangedListener(new TextWatcher() {
             @Override
             public void afterTextChanged(Editable s) {
@@ -83,21 +85,11 @@ public class TempActivity extends AppCompatActivity {
         spinnerOrigem.setSelection(0);
         spinnerDestino.setSelection(1);
 
-        SpinnerListener listener = new SpinnerListener();
-        spinnerOrigem.setOnItemSelectedListener(listener);
-        spinnerDestino.setOnItemSelectedListener(listener);
+        spinnerOrigem.setOnItemSelectedListener(this);
+        spinnerDestino.setOnItemSelectedListener(this);
     }
 
-    private class SpinnerListener implements AdapterView.OnItemSelectedListener {
-        @Override
-        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-            calcularTemperatura();
-        }
 
-        @Override
-        public void onNothingSelected(AdapterView<?> parent) {
-        }
-    }
 
 
     private void calcularTemperatura() {
@@ -123,5 +115,14 @@ public class TempActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        calcularTemperatura();
 
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
+    }
 }
